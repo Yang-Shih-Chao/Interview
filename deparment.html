@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script src="js\jquery.js"></script>
+
+<script>
+
+let index;
+
+let moving;
+$(document).ready(function(){
+	index=0; //初期設定是第一塊
+	moving=false;//初期設定效果不在進行中
+	$("header").on("click",function(){
+		if(!moving){ //沒有動畫效果時，才做下一張
+
+			nextSlide();
+		}
+	});
+});
+
+function nextSlide(){
+		moving=true;
+		//目前的區塊，滑出到左邊
+		//取得下一個區塊
+		let keyvisuals=$(".keyvisual");
+
+		//keyvisuals.eq(index).animate({ left:-window.innerWidth+"px"});
+		keyvisuals.eq(index).animate({ left:"-100%"},1000,function(){
+				$(this).hide();
+				moving=false;
+		});
+		//取得下一個區塊
+		
+		index=(index+1)%3; //取餘數用在循環的概念
+
+		//下一個區塊，從右邊滑入
+		keyvisuals.eq(index).css({left:"100%"}).show().animate({ left:"0px"},1000);
+console.log(index)
+}
+
+
+
+</script>
+<style>
+body{
+
+	margin:0px;
+}
+
+
+
+
+header{
+
+	width:100%;height:700px;overflow:hidden;
+	position: relative;/*成為絕對定位的參考對象*/
+
+
+}
+header>.keyvisual{
+
+	position: absolute;left:0px;top:0px;/*絕對定位可以將圖片疊再一起但，參考對象是整份網頁*/
+	width:100%;height:100%;display:none;
+	background-position:center center;
+	background-size:cover;/*盡量保留尺寸比例不會跑掉*/
+
+}
+
+header>.keyvisual:first-child{   /*css選擇器，只留下第一張*/
+
+	display:block;
+
+
+}
+
+</style>
+
+
+<body>
+
+<header>
+		<div class="keyvisual"style="background-image:url(0.jpg)">1</div>
+		<div class="keyvisual"style="background-image:url(1.jpg)">2</div>
+		<div class="keyvisual"style="background-image:url(2.jpg)">3</div>
+
+</header>
+
+
+</body>
+</html>

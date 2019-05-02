@@ -1,0 +1,153 @@
+
+<html>
+<head>
+	<link href="./css/Css.css" rel="stylesheet">
+    <script src="d3.js"></script>
+    <script src="d3.layout.cloud.js"></script>
+    <script src="d3.wordcloud.js"></script>
+	<script src="https://aa002868.github.io/pdata/DongYuhYang.js"></script><!--匯入文字雲的js檔-->
+    <script src="https://aa002868.github.io/pdata/YiFanWang.js"></script><!--匯入文字雲的js檔-->
+	<script src="https://aa002868.github.io/pdata/HungLungWang.js"></script>
+    <script src="https://aa002868.github.io/pdata/JouMingChang.js"></script>
+    <script src="https://aa002868.github.io/pdata/ChingShihTsou.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="./js/jquery.anchor.1.0.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$(".goClouds").zxxAnchor({
+			anchortag: "href"					   
+		});
+		$("#btnBottom").zxxAnchor();
+		$("#btnTop").zxxAnchor({
+			anchorSmooth: false					   
+		});	   
+	});
+	</script>
+</head>
+<body>
+<div id="header"><img width="100%"src="./img/bg.jpg"><img>
+<div>
+<div style=background:#E0E0E0>
+<div align="center" style=margin:5px>
+  <ul class="drop-down-menu"><li><a onclick="showTeaPic()">教授雲</a>
+             <!-- <ul>
+                <li><a href="#clouds" onclick="DongYuhYang()">楊東育</a>
+                  <ul>
+                        <li><a href="#" >專業項目</a>
+                        </li>
+                        <li><a href="#" >專業項目</a>
+                        </li>
+                        <li><a href="#" >專業項目</a>
+                        </li>
+                        <li><a href="#" >專業項目</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#clouds" onclick="YiFanWang()">王亦凡</a>
+                </li>
+                <li><a href="#clouds" onclick="HungLungWang()">王弘倫</a>
+                </li>
+                <li><a href="#clouds" onclick="JouMingChang()">張肇明</a>
+                </li><li><a href="#clouds" onclick="ChingShihTsou()">鄒慶士</a>
+                </li>
+            </ul>-->
+        </li>
+        <li><a onclick="show1()">資訊話題熱門度</a>
+            
+        </li>
+        <li><a onclick="show2()">尚未想到</a>
+        </li>
+        
+    </ul>
+	</div>
+	</div>
+	
+	
+	<div style=background:#9D9D9D>
+<div align="center" style=margin:1px>
+  <ul class="drop-down-menu" id="teacherPic" style="display: none;">
+        <li><a href="#clouds" onclick="DongYuhYang()" class="goClouds"><img class="teaPic" src="./img/1.jpg"><img><br>楊東育 教授</a>
+        </li >
+        <li><a href="#clouds" onclick="YiFanWang()" class="goClouds"><img class="teaPic" src="./img/2.jpg"><img><br>王亦凡 教授</a>
+        </li>
+        <li><a href="#clouds" onclick="HungLungWang()" class="goClouds"><img class="teaPic" src="./img/3.jpg"><img><br>王弘倫 教授</a>   
+        </li>
+		<li><a href="#clouds" onclick="JouMingChang()" class="goClouds"><img class="teaPic" src="./img/4.jpg"><img><br>張肇明 教授</a>   
+        </li>
+		<li><a href="#clouds" onclick="ChingShihTsou()" class="goClouds"><img class="teaPic" src="./img/5.jpg"><img><br>鄒慶士 教授</a>   
+        </li>
+    </ul>
+	</div>
+	</div>
+	
+<div id="clouds" style="height:135%; display:none;">
+<br><br><br>
+<div id="DongYuhYang" style="display: none;" align="center"  class="name"><h1>楊東育 教授</h1><script>DongYuhYang();</script></div>
+<div id="YiFanWang" style="display: none;" align="center"  class="name" ><h1>王亦凡 教授</h1><br><script>YiFanWang();</script></div>
+<div id="HungLungWang" style="display: none;" align="center"  class="name" ><h1>王弘倫 教授</h1><br><script>HungLungWang();</script></div>	
+<div id="JouMingChang" style="display: none;" align="center"  class="name" ><h1>張肇明 教授</h1><br><script>JouMingChang();</script></div>
+<div id="ChingShihTsou" style="display: none;" align="center"  class="name" ><h1>鄒慶士 教授</h1><br><script>ChingShihTsou();</script></div>	
+
+</div>
+<script type="text/javascript">
+function show1()
+		{
+		document.getElementById("teacherPic").style.display="none";
+		}		
+function show2()
+		{
+		document.getElementById("teacherPic").style.display="none";
+		}
+function showTeaPic()
+		{
+		document.getElementById("teacherPic").style.display="";
+		}
+function DongYuhYang()
+		{
+		document.getElementById("clouds").style.display="";
+		document.getElementById("DongYuhYang").style.display="";
+		document.getElementById("YiFanWang").style.display="none";
+		document.getElementById("HungLungWang").style.display="none";
+		document.getElementById("JouMingChang").style.display="none";
+		document.getElementById("ChingShihTsou").style.display="none";
+		}
+		function YiFanWang()
+		{
+		document.getElementById("clouds").style.display="";
+		document.getElementById("DongYuhYang").style.display="none";
+		document.getElementById("YiFanWang").style.display="";
+		document.getElementById("HungLungWang").style.display="none";
+		document.getElementById("JouMingChang").style.display="none";
+		document.getElementById("ChingShihTsou").style.display="none";
+		}
+		function HungLungWang()
+		{
+		document.getElementById("clouds").style.display="";
+		document.getElementById("DongYuhYang").style.display="none";
+		document.getElementById("YiFanWang").style.display="none";
+		document.getElementById("HungLungWang").style.display="";
+		document.getElementById("JouMingChang").style.display="none";
+		document.getElementById("ChingShihTsou").style.display="none";
+		}
+		function JouMingChang()
+		{
+		document.getElementById("clouds").style.display="";
+		document.getElementById("DongYuhYang").style.display="none";
+		document.getElementById("YiFanWang").style.display="none";
+		document.getElementById("HungLungWang").style.display="none";
+		document.getElementById("JouMingChang").style.display="";
+		document.getElementById("ChingShihTsou").style.display="none";
+		}
+		function ChingShihTsou()
+		{
+		document.getElementById("clouds").style.display="";
+		document.getElementById("DongYuhYang").style.display="none";
+		document.getElementById("YiFanWang").style.display="none";
+		document.getElementById("HungLungWang").style.display="none";
+		document.getElementById("JouMingChang").style.display="none";
+		document.getElementById("ChingShihTsou").style.display="";
+		}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.pathline {
+	stroke: blue;
+	stroke-width: 3;
+	fill: none;
+}
+#xline {
+	stroke: red;
+	
+}
+#yline {
+	stroke: black;
+}
+#pathline4 {
+	stroke: yellow;
+}
+
+</style>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+	<div align="center" style="border:1px #FFAC55 solid"><h1>論文發表累計篇數</h1></div>
+	<div class="table" align="center" style="border:1p #FFAC55 solid"></div>
+<script type="text/javascript">
+var width  = 1024;
+var height = 768;
+var bord =[{x:0,y:768},
+  {x:1024,y:768},];
+d3.csv("./paper.csv", function(data) {
+	console.log(data);
+	data.forEach(function(d) {
+		console.log(d.year);
+		console.log(d.total);
+	});
+	var hmaxy = d3.max(data, function(d) { return d.total; });
+	var ln = data.length;
+	//新建svg畫布
+	var ctrl  = d3.select(".table").append("svg").attr("width", width).attr("height", height);
+	//畫線規則
+	var lines = d3.line().
+	x(function(d,i){ return i * (width/ln); }).
+	y(function(d){ return height-d.total * (height/hmaxy); });
+	//讀取數值畫線
+	ctrl.append("path").data([data]).
+	attr("class", "pathline").
+	attr("d", lines);
+	//X軸
+	var xline = d3.line().
+	x(function(d,i){ return i * (width/ln); }).
+	y(height);
+	//讀取數值畫線
+	ctrl.append("path").data([data]).
+	attr("class", "pathline")
+	.attr("id","xline")
+	.attr("d", xline);
+	//Y軸
+	var yline = ctrl.append("line")
+	.attr("x1",0)
+	.attr("y1",0)
+	.attr("x2",0)
+	.attr("y2",height)
+	.attr("class", "pathline")
+	.attr("id","yline");
+	//點
+
+	
+	
+	//讀取數值畫線
+
+	//文字規則
+	/*var text = ctrl.selectAll("text")
+                        .data([data])
+                        .enter()
+                        .append("text");
+	var textLabels = text
+                 .attr("x", function(d,i) { return i; })
+                 .attr("y", function(d) { return 500; })
+                 .text( function (d) { return "( " + d.year + ", " + d.total +" )"; })
+                 .attr("font-family", "sans-serif")
+                 .attr("font-size", "20px")
+                 .attr("fill", "red");*/
+});
+</script>
+</body>
+</html>
